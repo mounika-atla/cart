@@ -2,12 +2,32 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
+import Cart from "./cart"
 import reportWebVitals from './reportWebVitals';
+import Products from './Products';
+import {
+  createBrowserRouter,
+  RouterProvider,
+} from "react-router-dom";
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <App></App>,
+    children:[{
+      path:"/",
+      element:<Products></Products>
+    },
+    {
+      path:"/cart",
+      element:<Cart></Cart>
+    }]
+  },
+]);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+      <RouterProvider router={router} />
   </React.StrictMode>
 );
 
